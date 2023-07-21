@@ -6,6 +6,6 @@
 // Вивести цю змінну користувачу в alert
 
 let hours = prompt("enter number of hours", 0);
-let seconds = hours * 60;
+let seconds = hours * 3600;
 
 alert(`At ${hours} hours ${seconds} seconds`);
