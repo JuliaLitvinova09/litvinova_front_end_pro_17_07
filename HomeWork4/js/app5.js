@@ -2,7 +2,7 @@
 let inputNumber = parseInt(prompt("enter the number", 0));
 
 let secondNumber = inputNumber % 10;
-let firstNumber = ((inputNumber - (inputNumber % 10)) / 10) % 10;
+let firstNumber = ((inputNumber - secondNumber) / 10) % 10;
 
 if (firstNumber > secondNumber) {
   console.log(
