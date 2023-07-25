@@ -1,12 +1,16 @@
 // Дано два різні числа. Визначити, яке з них більше, а яке менше.
 
-let a = parseInt(prompt("enter the first number", 0));
-let b = parseInt(prompt("enter the second number", 0));
+let firstNumber = parseInt(prompt("enter the first number", 0));
+let secondNumber = parseInt(prompt("enter the second number", 0));
 
-if (a > b) {
-  console.log("a>b");
-} else if (a < b) {
-  console.log("a<b");
+if (firstNumber > secondNumber) {
+  console.log(
+    `the first number ${firstNumber} is bigger, then the second number ${secondNumber}`
+  );
+} else if (firstNumber < secondNumber) {
+  console.log(
+    `the second number ${secondNumber} is bigger, then the first number ${firstNumber}`
+  );
 } else {
-  console.log("a=b");
+  console.log("the numbers are equal");
 }

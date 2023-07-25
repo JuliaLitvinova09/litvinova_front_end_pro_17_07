@@ -2,16 +2,20 @@
 
 const koeff = 0.305;
 
-let distanceFirst = parseFloat(prompt("enter the first distance (km)", 0));
-let distanceSecond = parseFloat(prompt("enter the second distance (fut)", 0));
+let distanceFirst = parseFloat(prompt("enter the first distance (km)", 0.0));
+let distanceSecond = parseFloat(prompt("enter the second distance (fut)", 0.0));
 
 let distanceFirstInMeters = distanceFirst * 1000;
 let distanceSecondInMeters = distanceSecond * koeff;
 
-if (distanceFirst > distanceSecond) {
-  console.log("distanceSecond < distanceFirst");
-} else if (distanceFirst < distanceSecond) {
-  console.log("distanceFirst < distanceSecond");
+if (distanceFirstInMeters > distanceSecondInMeters) {
+  console.log(
+    `Відстань у км ${distanceFirstInMeters}(м) більша, ніж відстань у футах ${distanceSecondInMeters} (м)`
+  );
+} else if (distanceFirstInMeters < distanceSecondInMeters) {
+  console.log(
+    `Відстань у км ${distanceFirstInMeters}(м) менша, ніж відстань у футах ${distanceSecondInMeters} (м)`
+  );
 } else {
-  console.log("distanceFirst = distanceSecond");
+  console.log("відстані рівні");
 }
