@@ -6,13 +6,14 @@ function getData(text, neadStr = false) {
   let value;
   do {
     value = prompt(text);
-  } while ((!neadStr && isNaN(value)) || !(neadStr && !itIsSign(value)));
+  } while ((!neadStr && isNaN(value)) || (neadStr && !itIsSign(value)));
+
   return value;
 }
 
 function itIsSign(text) {
-  //поиск будет -1, если не нашли знак, или кроме знака есть что-то еще
-  return text.search(/[^+\-*/%^]/) === -1 || text.length !== 1;
+  //поиск будет -1, если не нашли знак, или кроме знака есть что-то еще (длина больше 1)
+  return !(text.search(/[+\-*/%^]/) === -1 || text.length !== 1);
 }
 
 function doMath(x, znak, y) {

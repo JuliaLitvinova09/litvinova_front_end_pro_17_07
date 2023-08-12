@@ -5,6 +5,7 @@
 function sum(inputValue) {
   let tempVal = inputValue;
   sum = function () {
+    // console.log(arguments[0], "arguments[0]");
     let param = arguments[0] ? arguments[0] : 0;
     return (tempVal += param);
   };
