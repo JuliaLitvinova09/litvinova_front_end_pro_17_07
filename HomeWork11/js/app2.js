@@ -17,7 +17,33 @@ function itIsSign(text) {
 }
 
 function doMath(x, znak, y) {
-  return eval(x + znak.replace("^", "**") + y);
+  let result = 0;
+  x = parseFloat(x);
+  y = parseFloat(y);
+
+  switch (znak) {
+    case "+":
+      result = x + y;
+      break;
+    case "-":
+      result = x - y;
+      break;
+    case "*":
+      result = x * y;
+      break;
+    case "/":
+      result = x / y;
+      break;
+    case "%":
+      result = x % y;
+      break;
+    case "^":
+      result = x ** y;
+      break;
+    default:
+      result = undefined;
+  }
+  return result;
 }
 
 let x = getData("Введите x");
