@@ -1,5 +1,4 @@
-
-.btn-go{
+#btn-go {
   border: 1px;
   border-radius: 8px;
   border-color: blue;
@@ -11,9 +10,24 @@
   text-align: center;
   cursor: pointer;
   display: auto;
-
 }
 
-.inv{
+.inv {
   display: none;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200, 200, 200);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+td {
+  border: 1px solid rgb(190, 190, 190);
+  padding: 10px 20px;
+}
+
+td {
+  text-align: center;
 }

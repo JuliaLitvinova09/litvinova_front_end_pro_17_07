@@ -10,15 +10,13 @@ document
   .addEventListener("click", function (event) {
     event.preventDefault();
     ref = prompt("Введите ссылку:");
-
     ref =
       ref.includes("http") || ref.includes("https") ? ref : "https://" + ref;
 
     if (ref) {
-      let btnGoDiv = document.getElementsByClassName("wrap-go");
-      // console.log(btnGoDiv.cocontains("inv"));
+      const btnGoDiv = document.getElementById("btn-go");
       btnGoDiv.classList.toggle("inv");
-      const btnGo = document.getElementById("btn-go");
+      const btnGo = document.getElementById("link-go");
 
       btnGo.addEventListener("click", function (event) {
         btnGo.setAttribute("href", ref);
