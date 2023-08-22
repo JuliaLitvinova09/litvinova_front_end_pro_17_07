@@ -1,0 +1,19 @@
+
+.btn-go{
+  border: 1px;
+  border-radius: 8px;
+  border-color: blue;
+  background-color: #2be28d;
+  width: 150px;
+  height: 30px;
+  margin-top: 20px;
+  padding-top: 10px;
+  text-align: center;
+  cursor: pointer;
+  display: auto;
+
+}
+
+.inv{
+  display: none;
+}
