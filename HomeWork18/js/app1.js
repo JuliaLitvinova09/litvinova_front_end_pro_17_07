@@ -5,24 +5,29 @@
 let array = [1, 2, [1.1, 1.2, 1.3], 3];
 
 function generateList(array) {
-  let text = "<ul>";
-  let arrLength = array.length;
-  let ulRow;
+  const arrLength = array.length;
+
+  const wrapper = document.getElementById("wrapper");
+  const ul = document.createElement("ul");
 
   for (let i = 0; i < arrLength; ++i) {
-    ulRow = array[i];
+    const li = document.createElement("li");
+    let ulRow = array[i];
     if (Array.isArray(ulRow)) {
-      text = text + " <li><ul>";
+      const ulWr = document.createElement("ul");
       for (let j = 0; j < ulRow.length; ++j) {
-        text = text + `<li>${ulRow[j]}</li>`;
+        const liWr = document.createElement("li");
+        liWr.textContent = ulRow[j];
+
+        ulWr.appendChild(liWr);
       }
-      text = text + "</ul></li>";
+      li.appendChild(ulWr);
     } else {
-      text = text + `<li>${ulRow}</li>`;
+      li.textContent = ulRow;
     }
+    ul.appendChild(li);
   }
-  text = text + "</ul>";
-  document.body.innerHTML = text;
+  wrapper.appendChild(ul);
 }
 
 generateList(array);
