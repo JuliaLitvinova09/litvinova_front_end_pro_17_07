@@ -9,11 +9,11 @@ document
   .getElementById("btn-input")
   .addEventListener("click", function (event) {
     event.preventDefault();
-    ref = prompt("Введите ссылку:");
-    ref =
-      ref.includes("http") || ref.includes("https") ? ref : "https://" + ref;
-
+    ref = prompt("Введите ссылку:").trim();
     if (ref) {
+      ref =
+        ref.includes("http") || ref.includes("https") ? ref : "https://" + ref;
+
       const btnGoDiv = document.getElementById("btn-go");
       btnGoDiv.classList.toggle("inv");
       const btnGo = document.getElementById("link-go");
