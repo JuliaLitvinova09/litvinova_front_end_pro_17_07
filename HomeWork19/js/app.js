@@ -1,4 +1,4 @@
-function ClearAllChilds() {
+function clearAllChilds() {
   let divs = document.querySelectorAll("#main div");
   for (let div of divs) {
     while (div.firstChild) {
@@ -8,7 +8,7 @@ function ClearAllChilds() {
 }
 
 function showCategories() {
-  ClearAllChilds();
+  clearAllChilds();
 
   const parentElement = document.getElementById("left");
 
@@ -78,9 +78,12 @@ document.getElementById("center").addEventListener("click", (event) => {
   }
 });
 
-document.getElementById("right").addEventListener("click", (event) => {
+let elRight = document.getElementById("right");
+
+elRight.addEventListener("click", (event) => {
   if (event.target.type === "button") {
-    alert("Товар куплений!");
-    showCategories();
+    let el = document.createElement("span");
+    el.innerHTML = "Товар куплений!";
+    elRight.appendChild(el);
   }
 });
