@@ -17,7 +17,6 @@ function showCategories() {
 
     let element = document.createElement("div");
     element.textContent = category.name;
-    element.setAttribute("data-category", categoryKey);
     parentElement.appendChild(element);
   }
 }
