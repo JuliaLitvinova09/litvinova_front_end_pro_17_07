@@ -9,32 +9,31 @@
 
 <body>
   <div id="container">
-  <form id="mainForm">
-    <p><input type="text" name="name" placeholder="name" /></p>
-    <p><input type="text" name="surname" placeholder="surname" /></p>
+    <form id="mainForm">
+      <p><input type="text" name="name" placeholder="name" /></p>
+      <p><input type="text" name="surname" placeholder="surname" /></p>
 
-    <p><input type="date" name="dateOfBirth" placeholder="Date of Birth" /></p>
+      <p><input type="date" name="dateOfBirth" placeholder="Date of Birth" /></p>
 
-    <p><input type="radio" name="gender" value="M" /> Male </p>
-    <p><input type="radio" name="gender" value="F" /> Female </p>
+      <p><input type="radio" name="gender" value="M" /> Male </p>
+      <p><input type="radio" name="gender" value="F" /> Female </p>
+      <p>
+        <select name="city">
+          <option value="NON">--select city--</option>
+          <option value="OD">Odessa</option>
+          <option value="DN">Dnipro</option>
+          <option value="KV">KIYV</option>
+        </select>
+      </p>
+      <p><input type="textarea" name="address" placeholder="address" /></p>
+      <p><input type="checkbox" name="languages" value="en" /> English </p>
+      <p><input type="checkbox" name="languages" value="de" /> Deutsch </p>
+      <p><input type="checkbox" name="languages" value="ru" /> Russian </p>
+      <p><input type="checkbox" name="languages" value="ua" /> Ukrainian </p>
 
-    <select name="city">
-      <option value="NON">--select city--</option>
-      <option value="OD">Odessa</option>
-      <option value="DN">Dnipro</option>
-      <option value="KV">KIYV</option>
-    </select>
-    <p><input type="textarea" name="address" placeholder="address" /></p>
-
-    <p><input type="checkbox" name="languages" value="en" /> English </p>
-    <p><input type="checkbox" name="languages" value="de" /> Deutsch </p>
-    <p><input type="checkbox" name="languages" value="ru" /> Russian </p>
-    <p><input type="checkbox" name="languages" value="ua" /> Ukrainian </p>
-
-
-    <p><input id="save" type="button" value="Save" /></p>
-  </form>
-</div>
+      <p><input id="save" type="button" value="Save" /></p>
+    </form>
+  </div>
 
   <script src="js/app.js"></script>
 </body>

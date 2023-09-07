@@ -1,11 +1,21 @@
-function getCheckedItems(items) {
-  const values = [];
-  for (let i = 0; i < items.length; i++) {
+function getCheckedItems(name) {
+  var items = document.getElementsByName(name);
+  var itemsChecked = [];
+  for (var i = 0; i < items.length; i++) {
     if (items[i].checked) {
-      values.push(items[i].value);
+      itemsChecked.push(items[i].value);
     }
   }
-  return values;
+  return itemsChecked;
+}
+
+function insertRowToTabl(table, name, value) {
+  let row = table.insertRow();
+  let cell = row.insertCell();
+  cell.innerHTML = name;
+
+  let cell2 = row.insertCell();
+  cell2.innerHTML = value;
 }
 
 function showData() {
@@ -15,31 +25,33 @@ function showData() {
   table = document.createElement("table");
   container.appendChild(table);
 
+  let checkboxIsViewed = false;
+  let radioIsViewed = false;
+
+  const cities = {
+    OD: "Odessa",
+    DN: "Dnipro",
+    KV: "KIYV",
+  };
+
   for (let field of form.elements) {
     if (field.name) {
       if (
-        field.type !== "radio" &&
-        field.type !== "checkbox" &&
-        field.type !== "select-one"
+        field.type == "text" ||
+        field.type == "textarea" ||
+        field.type == "date"
       ) {
-        console.log(field.type, field.value);
-        let row = table.insertRow();
-        let cell = row.insertCell();
-        cell.innerHTML = field.name;
-
-        let cell2 = row.insertCell();
-        cell2.innerHTML = field.value;
-      } else if (field.type === "checkbox") {
-        let row = table.insertRow();
-        let cell = row.insertCell();
-        cell.innerHTML = field.name;
-
-        let cell2 = row.insertCell();
-        console.log(field.type, getCheckedItems(field.value));
-        cell2.innerHTML = getCheckedItems(field.value);
+        insertRowToTabl(table, field.name, field.value);
+      } else if (field.type === "checkbox" && !checkboxIsViewed) {
+        insertRowToTabl(table, field.name, getCheckedItems(field.name));
+        checkboxIsViewed = true;
+      } else if (!radioIsViewed) {
+        insertRowToTabl(table, field.name, getCheckedItems(field.name));
+        radioIsViewed = true;
       }
     }
   }
+  insertRowToTabl(table, "city", cities[form.city.value]);
 }
 
 function removeForm() {
