@@ -22,11 +22,8 @@ function showData() {
   const form = document.getElementById("mainForm");
   const container = document.getElementById("container");
 
-  table = document.createElement("table");
+  const table = document.createElement("table");
   container.appendChild(table);
-
-  let checkboxIsViewed = false;
-  let radioIsViewed = false;
 
   const cities = {
     OD: "Odessa",
@@ -34,24 +31,17 @@ function showData() {
     KV: "KIYV",
   };
 
-  for (let field of form.elements) {
-    if (field.name) {
-      if (
-        field.type == "text" ||
-        field.type == "textarea" ||
-        field.type == "date"
-      ) {
-        insertRowToTabl(table, field.name, field.value);
-      } else if (field.type === "checkbox" && !checkboxIsViewed) {
-        insertRowToTabl(table, field.name, getCheckedItems(field.name));
-        checkboxIsViewed = true;
-      } else if (!radioIsViewed) {
-        insertRowToTabl(table, field.name, getCheckedItems(field.name));
-        radioIsViewed = true;
-      }
-    }
-  }
+  let name = document.getElementsByName("name")[0].value;
+  let surName = document.getElementsByName("surname")[0].value;
+  let dateOfBirth = document.getElementsByName("dateOfBirth")[0].value;
+
+  insertRowToTabl(table, "name", name);
+  insertRowToTabl(table, "surname", surName);
+  insertRowToTabl(table, "dateOfBirth", dateOfBirth);
+
+  insertRowToTabl(table, "gender", getCheckedItems("gender"));
   insertRowToTabl(table, "city", cities[form.city.value]);
+  insertRowToTabl(table, "languages", getCheckedItems("languages"));
 }
 
 function removeForm() {
