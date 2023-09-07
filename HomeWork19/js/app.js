@@ -16,6 +16,7 @@ function showCategories() {
     const category = categories[categoryKey];
 
     let element = document.createElement("div");
+    element.setAttribute("data-category", categoryKey);
     element.textContent = category.name;
     parentElement.appendChild(element);
   }

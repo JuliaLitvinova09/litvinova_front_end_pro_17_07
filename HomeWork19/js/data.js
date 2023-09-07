@@ -1,5 +1,5 @@
 const categories = {
-  books: {
+  flowers: {
     name: "Квіти",
     products: [
       {
@@ -17,7 +17,7 @@ const categories = {
       },
     ],
   },
-  phones: {
+  berries: {
     name: "Ягідні кущі",
     products: [
       {
@@ -43,7 +43,7 @@ const categories = {
       },
     ],
   },
-  tablets: {
+  trees: {
     name: "Плодові дерева",
     products: [
       {
