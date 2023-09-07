@@ -7,6 +7,29 @@ function clearAllChilds() {
   }
 }
 
+function hideOrderForm() {
+  const elForm = document.getElementById("order");
+  elForm.classList.add("invisible");
+  removOrderDescription();
+}
+function showOrderForm() {
+  const elForm = document.getElementById("order");
+  elForm.classList.remove("invisible");
+}
+
+function removOrderDescription() {
+  const form = document.querySelector("h1");
+
+  if (form) {
+    const parent = form.parentNode;
+    parent.removeChild(form);
+
+    const table = document.querySelector("table");
+    const parentT = table.parentNode;
+    parentT.removeChild(table);
+  }
+}
+
 function showCategories() {
   clearAllChilds();
 
@@ -16,8 +39,10 @@ function showCategories() {
     const category = categories[categoryKey];
 
     let element = document.createElement("div");
+    element.setAttribute("data-category", categoryKey);
     element.textContent = category.name;
     parentElement.appendChild(element);
+    hideOrderForm();
   }
 }
 
@@ -32,10 +57,11 @@ function showProducts(products, category) {
     element.setAttribute("data-category", category);
 
     parentElement.appendChild(element);
+    hideOrderForm();
   }
 }
 
-function showdeProductDecription(product) {
+function showProductDecription(product) {
   const parentElement = document.getElementById("right");
   parentElement.innerHTML = "";
 
@@ -51,6 +77,8 @@ function showdeProductDecription(product) {
   element.appendChild(btn);
 }
 
+let currentProduct;
+
 showCategories();
 
 document.getElementById("left").addEventListener("click", (event) => {
@@ -61,6 +89,8 @@ document.getElementById("left").addEventListener("click", (event) => {
 
     const elDescription = document.getElementById("right");
     elDescription.innerHTML = "";
+    currentProduct = undefined;
+    hideOrderForm();
   }
 });
 
@@ -69,11 +99,12 @@ document.getElementById("center").addEventListener("click", (event) => {
     const productId = event.target.getAttribute("data-product");
     const categoryKey = event.target.getAttribute("data-category");
 
-    const product = categories[categoryKey].products.find(
+    currentProduct = categories[categoryKey].products.find(
       (product) => product.id == productId
     );
 
-    showdeProductDecription(product);
+    showProductDecription(currentProduct);
+    hideOrderForm();
   }
 });
 
@@ -81,8 +112,6 @@ let elRight = document.getElementById("right");
 
 elRight.addEventListener("click", (event) => {
   if (event.target.type === "button") {
-    let el = document.createElement("span");
-    el.innerHTML = "Товар куплений!";
-    elRight.appendChild(el);
+    showOrderForm();
   }
 });

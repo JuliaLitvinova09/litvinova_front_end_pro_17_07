@@ -15,11 +15,42 @@
     <div id="center"></div>
     <div id="right"></div>
   </div>
-  
 
+  <div id="order" class="invisible">
+    <form id="mainForm">
+      <p><input type="text" name="name" placeholder="ПІБ" required /></p>
+      <p>
+        <select name="city" required>
+          <option value="" selected="selected" hidden="hidden">--місто--</option>
+          <option value="OD">Одеса</option>
+          <option value="DN">Дніпро</option>
+          <option value="KV">Київ</option>
+        </select>
+      </p>
+
+      <p>
+        <select name="store" required>
+
+          <option value="" selected="selected" hidden="hidden">--склад нової пошти--</option>
+          <option value="001">№1</option>
+          <option value="002">№2</option>
+          <option value="003">№3</option>
+        </select>
+      </p>
+
+      <p><input type="number" name="amount" placeholder="кількість" required min="1"/></p>
+      <p><input type="radio" name="pay" value="післяплата" required /> післяплата </p>
+      <p><input type="radio" name="pay" value="банківська карта" required/> банківська карта </p>
+
+        <p><input type="textarea" name="comment" placeholder="примітки до замовлення"  /></p>
+
+      <p><input id="save" type="button" value="send" /></p>
+    </form>
+  </div>
 
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/order.js"></script>
 </body>
 
 </html>

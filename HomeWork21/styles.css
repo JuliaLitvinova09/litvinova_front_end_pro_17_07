@@ -8,7 +8,9 @@
   border: 1px solid black;
   min-height: 100px;
   padding: 5px;
+  display: auto;
 }
+
 
 #btn {
   display: flex;
@@ -18,4 +20,27 @@
 span
 {
   color: #dc143c;
+}
+/* #order {
+  display: auto;
+} */
+
+#order.invisible{
+  display: none;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200, 200, 200);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+td {
+  border: 1px solid rgb(190, 190, 190);
+  padding: 10px 20px;
+}
+
+td {
+  text-align: center;
 }
