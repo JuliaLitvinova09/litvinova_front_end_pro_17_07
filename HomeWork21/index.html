@@ -18,9 +18,9 @@
 
   <div id="order" class="invisible">
     <form id="mainForm">
-      <p><input type="text" name="name" placeholder="ПІБ" required /></p>
+      <p><input type="text" name="name" placeholder="ПІБ" /></p>
       <p>
-        <select name="city" required>
+        <select name="city">
           <option value="" selected="selected" hidden="hidden">--місто--</option>
           <option value="OD">Одеса</option>
           <option value="DN">Дніпро</option>
@@ -29,7 +29,7 @@
       </p>
 
       <p>
-        <select name="store" required>
+        <select name="store">
 
           <option value="" selected="selected" hidden="hidden">--склад нової пошти--</option>
           <option value="001">№1</option>
@@ -38,9 +38,9 @@
         </select>
       </p>
 
-      <p><input type="number" name="amount" placeholder="кількість" required min="1"/></p>
-      <p><input type="radio" name="pay" value="післяплата" required /> післяплата </p>
-      <p><input type="radio" name="pay" value="банківська карта" required/> банківська карта </p>
+      <p><input type="number" name="amount" placeholder="кількість" min="1"/></p>
+      <p><input type="radio" name="pay" value="післяплата" /> післяплата </p>
+      <p><input type="radio" name="pay" value="банківська карта"/> банківська карта </p>
 
         <p><input type="textarea" name="comment" placeholder="примітки до замовлення"  /></p>
 

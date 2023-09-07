@@ -9,6 +9,7 @@ function clearAllChilds() {
 
 function hideOrderForm() {
   const elForm = document.getElementById("order");
+
   elForm.classList.add("invisible");
   removOrderDescription();
 }
@@ -112,6 +113,7 @@ let elRight = document.getElementById("right");
 
 elRight.addEventListener("click", (event) => {
   if (event.target.type === "button") {
+    document.forms[0].reset();
     showOrderForm();
   }
 });
