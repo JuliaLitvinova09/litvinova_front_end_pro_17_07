@@ -74,7 +74,7 @@ function validateFields() {
     pay: valPay,
     city: cities[inputCity.value],
     comment: comment,
-    date: new Date(),
+    date: new Date().toLocaleDateString(),
     price: currentProduct.price,
   };
 
@@ -83,9 +83,7 @@ function validateFields() {
   return true;
 }
 
-function addTable(h1, order) {
-  const table = document.createElement("table");
-  h1.appendChild(table);
+function addTable(table, order) {
   insertRowToTabl(table, "Дата замовлення", order.date);
   insertRowToTabl(table, "ПІБ", order.name);
   insertRowToTabl(table, "Товар:", order.sku);
@@ -107,17 +105,23 @@ function showOrder(order, index, details) {
   btn.setAttribute("type", "button");
   btn.textContent = "X";
   btn.setAttribute("data-task-index", index);
-
-  h1.appendChild(btn);
-  container.appendChild(h1);
-
+  const table = document.createElement("table");
   if (details) {
-    addTable(h1, order);
+    container.appendChild(h1);
+
+    h1.appendChild(table);
+    addTable(table, order);
+  } else {
+    h1.innerHTML = `${h1.innerHTML} ( від ${order.date}, сума:  ${
+      order.amount * order.price
+    } )`;
+    container.appendChild(h1);
+
+    h1.appendChild(btn);
   }
   h1.addEventListener("click", () => {
-    const table = document.createElement("table");
     h1.appendChild(table);
-    addTable(h1, order);
+    addTable(table, order);
   });
 
   btn.addEventListener("click", () => {
