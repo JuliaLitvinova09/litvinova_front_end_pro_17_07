@@ -96,6 +96,7 @@ function addTable(table, order) {
 
 function showOrder(order, index, details) {
   const container = document.getElementById("orders");
+  container.classList.remove("invisible");
 
   const h1 = document.createElement("h1");
   h1.innerHTML = "Ваше замовлення #:" + (index + 1);
@@ -146,22 +147,40 @@ window.addEventListener("load", () => {
   ordersList = JSON.parse(localStorage.getItem("ordersList")) || [];
 });
 
-document.getElementById("my-orders").addEventListener("click", (event) => {
-  const elForm = document.getElementById("main");
-  elForm.classList.add("invisible");
+let btnOrders = document.getElementById("my-orders");
+btnOrders.addEventListener("click", (event) => {
+  if (event.target.defaultValue === "Мої замовлення") {
+    const elForm = document.getElementById("main");
+    elForm.classList.add("invisible");
 
-  const elForm2 = document.getElementById("order");
-  elForm2.classList.add("invisible");
+    const elForm2 = document.getElementById("order");
+    elForm2.classList.add("invisible");
 
-  const elOrders = document.getElementById("orders");
-  elOrders.classList.remove("invisible");
+    const elOrders = document.getElementById("orders");
+    elOrders.classList.remove("invisible");
 
-  let divs = document.querySelectorAll("#orders");
-  for (let div of divs) {
-    while (div.firstChild) {
-      div.removeChild(div.firstChild);
+    let divs = document.querySelectorAll("#orders");
+    for (let div of divs) {
+      while (div.firstChild) {
+        div.removeChild(div.firstChild);
+      }
     }
-  }
 
-  showOrders();
+    showOrders();
+    btnOrders.value = "Повернутись до магазину";
+  } else {
+    btnOrders.value = "Мої замовлення";
+    const elForm = document.getElementById("main");
+    elForm.classList.remove("invisible");
+    const elFormOrders = document.getElementById("orders");
+
+    let chlds = document.querySelectorAll("#orders");
+    for (let chld of chlds) {
+      while (chld.firstChild) {
+        chld.removeChild(chld.firstChild);
+      }
+    }
+    elFormOrders.classList.add("invisible");
+    showCategories();
+  }
 });

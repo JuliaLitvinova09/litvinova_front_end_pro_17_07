@@ -43,8 +43,8 @@ function showCategories() {
     element.setAttribute("data-category", categoryKey);
     element.textContent = category.name;
     parentElement.appendChild(element);
-    hideOrderForm();
   }
+  hideOrderForm();
 }
 
 function showProducts(products, category) {
@@ -58,8 +58,8 @@ function showProducts(products, category) {
     element.setAttribute("data-category", category);
 
     parentElement.appendChild(element);
-    hideOrderForm();
   }
+  hideOrderForm();
 }
 
 function showProductDecription(product) {
