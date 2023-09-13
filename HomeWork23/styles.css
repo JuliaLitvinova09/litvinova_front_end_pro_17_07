@@ -1,0 +1,28 @@
+#users {
+  padding: 10px;
+}
+#users div[wrap-user-id]{
+  display: flex;
+  gap: 10px;
+  margin: 5px;
+}
+
+.actions > input {
+  margin-right: 5px;
+}
+
+.editBtn {
+  color: red;
+}
+
+#form form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+#users div[data-user-id-view]{
+  margin: 20px;
+  color: blue;
+}
+
