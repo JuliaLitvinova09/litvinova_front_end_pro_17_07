@@ -1,7 +1,7 @@
 #users {
   padding: 10px;
 }
-#users div[wrap-user-id]{
+#users > div {
   display: flex;
   gap: 10px;
   margin: 5px;
@@ -21,8 +21,8 @@
   width: 200px;
 }
 
-#users div[data-user-id-view]{
+#users div[data-user-id-view] {
+  display: inline;
   margin: 20px;
   color: blue;
 }
-

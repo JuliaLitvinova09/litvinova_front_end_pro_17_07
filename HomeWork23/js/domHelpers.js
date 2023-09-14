@@ -48,3 +48,11 @@ function removeElement(element) {
     element.remove();
   }
 }
+
+function cleenViewInfo() {
+  let view = document.querySelector(`div[data-user-id-view]`);
+
+  if (view) {
+    removeElement(`div[data-user-id-view]`);
+  }
+}
