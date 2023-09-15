@@ -146,7 +146,7 @@ function validate(user) {
 
   return true;
 }
-function UpdateUserRow(user) {
+function updateUserRow(user) {
   let key;
   parent = document.querySelector(`div[data-user-id="${user.id}"]`);
 
@@ -181,10 +181,10 @@ function saveUser(newUser) {
 }
 
 function handleDeleteUser(event) {
-  if (confirm("Вы хотите удалить пользователя?") == true) {
-    const userId = event.target.parentNode.getAttribute("data-id");
-    deleteUserById(userId);
-  }
+  const userId = event.target.parentNode.getAttribute("data-id");
+  popup.style.display = "block";
+  popup.setAttribute("data-id", userId);
+  overlay.classList.add("show");
 }
 
 function deleteUserById(id) {
