@@ -157,33 +157,31 @@ function validate(user) {
   let pattern;
 
   for (let key in user) {
-    debugger;
-
     switch (key) {
       case "name":
-        pattern = /^([A-Z][a-z]{1,})||^([А-Я][а-яЁё]{1,})/;
+        pattern = /^[A-Z][a-z]{1,}/;
         break;
       case "login":
-        // code block
+        pattern = /\w{6,25}/;
         break;
       case "age":
-        // code block
+        pattern = /^[1-9]+/;
         break;
       case "email":
-        // code block
+        pattern = /[0-9a-z_]+@[0-9a-z_]+\.[a-z]{2,5}/i;
         break;
       case "phone":
-        // code block
+        pattern = /^\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
         break;
       case "card":
-        // code block
+        pattern = /^[0-9]{16}$/;
         break;
       default:
-      // code block
+        continue;
     }
     result = user[key].match(pattern);
 
-    if (!result) {
+    if (result == null) {
       formElements[key].setCustomValidity("поле не заповнено не вірно!");
       formElements[key].reportValidity();
       return false;
@@ -218,7 +216,7 @@ function saveUser(newUser) {
       }
       return user;
     });
-    UpdateUserRow(newUser);
+    updateUserRow(newUser);
   }
 
   updateStorage();
