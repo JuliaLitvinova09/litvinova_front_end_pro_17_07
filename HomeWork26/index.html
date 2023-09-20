@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Litvinova Julia, home work 26</title>
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+  <!-- <link href="../node_modules/bootstrap/" type="text/css" rel="stylesheet" /> -->
+</head>
+
+<body>
+  <button type="button" class="btn btn-primary" data-bs-toggle-tooltip="tooltip" data-bs-placement="top"
+    data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@hillel" data-bs-title="click me"> Button
+    with tooltip and modal
+  </button>
+
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Recipient:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="liveAlertPlaceholder"></div>
+  <button type="button" class="btn btn-primary" id="liveAlertBtn">Show alert</button>
+
+  <h2></h2>
+
+  <div class="input-group">
+    <input id="inputBirthday" type="text" class="form-control" placeholder="Enter your birthday"
+      aria-label="Enter your birthday">
+    <button id="btnInputBirthday" class="btn btn-outline-secondary" type="button">OK</button>
+  </div>
+
+  <div id="alertAboutFormat"></div>
+
+
+  <div id="formatBirthday"></div>
+  <script src="../node_modules/moment/min/moment.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
