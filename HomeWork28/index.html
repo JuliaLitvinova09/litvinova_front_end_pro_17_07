@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Litvinova Julia, home work 28</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="wrap-characters">
+      <button type="button" id="btn-people" class="btn btn-primary "> People
+      </button>
+
+      <ul id="list-group-people" class="list-group invisible"></ul>
+      <button type="button" id="btn-people-next" class="btn btn-secondary invisible"> Sea more...</button>
+
+    </div>
+
+    <div class="wrap-planets">
+      <button type="button" id="btn-planets" class="btn btn-primary "> Planets
+      </button>
+
+      <ul id="list-group-planets" class="list-group invisible"></ul>
+      <button type="button" id="btn-planets-next" class="btn btn-secondary invisible"> Sea more...</button>
+
+    </div>
+
+    <div class="wrap-vehicles">
+      <button type="button" id="btn-vehicles" class="btn btn-primary "> Vehicles
+      </button>
+
+      <ul id="list-group-vehicles" class="list-group invisible"></ul>
+      <button type="button" id="btn-vehicles-next" class="btn btn-secondary invisible"> Sea more...</button>
+
+    </div>
+
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">About:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Details:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+    <script src="js/domHelpers.js"></script>
+    <script src="js/app.js"></script>
+  </div>
+
+</html>

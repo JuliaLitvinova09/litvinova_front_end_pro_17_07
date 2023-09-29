@@ -1,0 +1,47 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  width: 1000px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+}
+
+.wrap-characters,
+.wrap-planets,
+.wrap-vehicles
+ {
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+
+}
+
+.btn{
+  width: 100%;
+}
+
+.list-group {
+  overflow: hidden;
+  overflow-y: scroll;
+  margin: 10px 0 10px;
+  height: 500px; 
+}
+
+#btn-people-next.invisible{
+  display: none;
+}
+
+#list-group-planets.invisible {
+  display: none;
+}
+
+#list-group-vehicles.invisible {
+  display: none;
+}
