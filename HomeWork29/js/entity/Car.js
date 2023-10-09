@@ -1,12 +1,19 @@
-function Car(name, age, brand, year) {
+function Car(brand, year) {
   this.brand = brand;
   this.year = year;
-  this.name = name;
-  this.age = age;
-
-  this.getCarInfo = function () {
-    document.write("Brand: ", this.brand, " <br> Year: ", this.year);
-  };
 }
 
-Car.prototype = new Human();
+Car.prototype.setOwner = function (owner) {
+  this.owner = owner;
+};
+
+Car.prototype.getCarInfo = function () {
+  document.write(
+    "Car owner: ",
+    this.owner.name,
+    "<br> Brand: ",
+    this.brand,
+    " <br> Year: ",
+    this.year
+  );
+};
