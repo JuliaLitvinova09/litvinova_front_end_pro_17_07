@@ -1,14 +1,24 @@
+// const columnDefs = [
+//   { field: "country" },
+//   { field: "athlete" },
+//   { field: "age" },
+//   { field: "sport" },
+//   { field: "year" },
+//   { field: "date" },
+//   { field: "gold" },
+//   { field: "silver" },
+//   { field: "bronze" },
+//   { field: "total" },
+// ];
+
 const columnDefs = [
-  { field: "country" },
-  { field: "athlete" },
+  { field: "adress", rowGroup: true },
+  { field: "number" },
+  { field: "appartments"[{ field: "people", field: "roomsAmount" }] },
+  // { field: "people" },
+  { field: "name" },
+  { field: "surname" },
   { field: "age" },
-  { field: "sport" },
-  { field: "year" },
-  { field: "date" },
-  { field: "gold" },
-  { field: "silver" },
-  { field: "bronze" },
-  { field: "total" },
 ];
 
 const defaultColDef = {
@@ -57,8 +67,23 @@ const gridOptions = {
 const eGridDiv = document.getElementById("myGrid");
 new agGrid.Grid(eGridDiv, gridOptions);
 
-fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
-  .then((response) => response.json())
-  .then((data) => {
-    gridOptions.api.setRowData(data);
-  });
+// fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+//   .then((response) => response.json())
+//   .then((data) => {
+//     gridOptions.api.setRowData(data);
+//   });
+
+let room1 = [
+  new Person("Jula", "Litvinova", 35),
+  new Person("Sergey", "Litvinov", 34),
+];
+let room2 = [new Person("Nansy", "Rttt", 35), new Person("Kit", "Dfhhfhf", 34)];
+
+let appartments = [new Appartment(1, room1), new Appartment(2, room2)];
+
+let house = [
+  new House("Крещатик, Киев", appartments),
+  new House("Воскресенская, Днепр", appartments),
+];
+
+gridOptions.api.setRowData(house);

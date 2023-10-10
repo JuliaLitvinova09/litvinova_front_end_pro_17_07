@@ -13,15 +13,39 @@
 <body>
 
 
-<div>
-  <button onclick="printColumns()">Print Columns</button>
+<div class="container">
+  <div class="input-group house">
+    <span class="input-group-text">Адрес и количество квартир</span>
+    <input type="text" aria-label="Адес" class="form-control" placeholder="Адрес">
+    <input type="number" aria-label="количество квартир" class="form-control" placeholder="Введите кол-во квартир">
+    <input class="btn btn-primary btn-house" type="button" value="Далее">
+  </div>
+
+
+  <div class="input-group room">
+    <span class="input-group-text">количество людей в квартире</span>
+    <input type="number"  class="form-control" value="count-ppl" placeholder="введите количество людей">
+    <input class="btn btn-primary btn-house" type="button" value="Далее">
+  </div>
+  <div class="input-group person">
+    <span class="input-group-text">Информация по жильцу</span>
+    <input type="text" aria-label="Имя" class="form-control" placeholder="Имя">
+    <input type="text" aria-label="Фамилия" class="form-control" placeholder="Фамилия">
+    <input type="number" aria-label="возраст" class="form-control" placeholder="Возраст">
+    <input class="btn btn-primary btn-house" type="button" value="Добавить">
+  </div>
+
 </div>
+   <button onclick="printColumns()">Print Columns</button>
+
 <div id="myGrid" style="height: 500px;" class="ag-theme-alpine">
- </div>
+ </div> 
 
   <script src="https://unpkg.com/ag-grid-enterprise/dist/ag-grid-enterprise.js"></script>
-  <script src="js/entity/Human.js"></script>
-  <script src="js/entity/Car.js"></script>
+
+  <script src="js/entity/Person.js"></script>
+  <script src="js/entity/Appartment.js"></script>
+  <script src="js/entity/House.js"></script>
   <script src="js/function.js"></script>
   <script src="js/app.js"></script>
 
