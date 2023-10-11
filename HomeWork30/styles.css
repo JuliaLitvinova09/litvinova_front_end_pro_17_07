@@ -1,7 +1,49 @@
-#container {
-    width: 1000px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
+/* Стили формы */
+#regForm {
+    background-color: #ffffff;
+    margin: 100px auto;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+}
+
+/* Стили полей ввода */
+input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+}
+
+/* Помечаем поля, у которых возникли ошибки валидации: */
+input.invalid {
+    background-color: #ffdddd;
+}
+
+/* Скрываем все этапы по умолчанию: */
+.tab {
+    display: none;
+}
+
+/* Создаем кружки, которые показывают этапы формы: */
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+/* Метим активный этап: */
+.step.active {
+    opacity: 1;
+}
+
+/* Метим завершенные и валидные этапы: */
+.step.finish {
+    background-color: #04AA6D;
 }
