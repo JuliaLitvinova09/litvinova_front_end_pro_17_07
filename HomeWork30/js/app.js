@@ -1,16 +1,3 @@
-// const columnDefs = [
-//   { field: "country" },
-//   { field: "athlete" },
-//   { field: "age" },
-//   { field: "sport" },
-//   { field: "year" },
-//   { field: "date" },
-//   { field: "gold" },
-//   { field: "silver" },
-//   { field: "bronze" },
-//   { field: "total" },
-// ];
-
 const columnDefs = [
   { field: "adress", rowGroup: true },
   { field: "number" },
@@ -73,6 +60,17 @@ new agGrid.Grid(eGridDiv, gridOptions);
 //     gridOptions.api.setRowData(data);
 //   });
 
+function flattenArray(data) {
+  // our initial value this time is a blank array
+  const initialValue = [];
+  // call reduce on our data
+  return data.reduce((total, value) => {
+    // if the value is an array then recursively call reduce
+    // if the value is not an array then just concat our value
+    return total.concat(Array.isArray(value) ? flattenArray(value) : value);
+  }, initialValue);
+}
+
 let room1 = [
   new Person("Jula", "Litvinova", 35),
   new Person("Sergey", "Litvinov", 34),
@@ -82,8 +80,9 @@ let room2 = [new Person("Nansy", "Rttt", 35), new Person("Kit", "Dfhhfhf", 34)];
 let appartments = [new Appartment(1, room1), new Appartment(2, room2)];
 
 let house = [
-  new House("Крещатик, Киев", appartments),
+  new House("Крещатик, Киев", new Appartment(1, room1)),
   new House("Воскресенская, Днепр", appartments),
 ];
 
 gridOptions.api.setRowData(house);
+console.log(JSON.stringify(house));
