@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ДЗ 31. Гамбургер</title>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Начинка гамбургеру</h1>
+    <div id="size" class="checkbox-variant">Оберіть розмір бургера:<br>
+      <input type="radio" name="size" id="smallSize" checked="true">маленький (50 тугриків, 20 калорій)<br>
+      <input type="radio" name="size" id="bigSize">великий (100 тугриків, 40 калорій)<br>
+    </div>
+
+    <div id="stuffing" class="checkbox-variant">
+      Оберіть начинку з:<br>
+      <input type="radio" name="stuffing" id="CHEESE">сиром (+ 10 тугриків, + 20 калорій)<br>
+      <input type="radio" name="stuffing" id="SALAD">салатом (+ 20 тугриків, + 5 калорій)<br>
+      <input type="radio" name="stuffing" id="POTATO">картоплею (+ 15 тугриків, + 10 калорій)<br>
+
+      Додаткові добавки:<br>
+      <input type="checkbox" id="SPICE">посипати приправою (+ 15 тугриків, 0 калорій)<br>
+      <input type="checkbox" id="MAYO">полити майонезом (+ 20 тугриків, + 5 калорій)<br>
+      <br>
+    </div>
+
+
+    <button id="burgerValue">Розрахувати вартість та калорійність</button>
+    <span id="burgerPrice"></span><span> тугриків </span><span id="burgerCalories"></span><span> ккал</span>
+  </div>
+
+
+  <script src="js/Hamburger.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
