@@ -1,7 +1,6 @@
 class Appartment {
-  constructor(number, roomsAmount, people) {
+  constructor(number, people) {
     this.number = number;
-    this.roomsAmount = roomsAmount;
     this.people = people;
   }
 }

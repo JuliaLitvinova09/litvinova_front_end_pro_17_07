@@ -1,7 +1,6 @@
 class Person {
-  constructor(name, surname, age) {
-    this.name = name;
-    this.surname = surname;
+  constructor(fullName, age) {
+    this.fullName = fullName;
     this.age = age;
   }
 

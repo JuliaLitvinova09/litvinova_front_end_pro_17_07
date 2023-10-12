@@ -1,88 +1,111 @@
-const columnDefs = [
-  { field: "adress", rowGroup: true },
-  { field: "number" },
-  { field: "appartments"[{ field: "people", field: "roomsAmount" }] },
-  // { field: "people" },
-  { field: "name" },
-  { field: "surname" },
-  { field: "age" },
-];
+// let room1 = [
+//   new Person("Jula", "Litvinova", 35),
+//   new Person("Sergey", "Litvinov", 34),
+// ];
+// let room2 = [new Person("Nansy", "Rttt", 35), new Person("Kit", "Dfhhfhf", 34)];
 
-const defaultColDef = {
-  resizable: true,
-  enableRowGroup: true,
-};
+// let appartments = [new Appartment(1, room1), new Appartment(2, room2)];
 
-function printColumns() {
-  const cols = gridOptions.columnApi.getAllGridColumns();
-  console.log("Grid Cols", cols);
-}
+// let house = [
+//   new House("Крещатик, Киев", appartments),
+//   new House("Воскресенская, Днепр", appartments),
+// ];
 
-const gridOptions = {
-  suppressDragLeaveHidesColumns: true,
-  suppressMakeColumnVisibleAfterUnGroup: true,
-  sideBar: false,
-  rowGroupPanelShow: "always", // always|onlyWhenGrouping|never
-  // groupDisplayType: 'singleColumn',
-  // groupDisplayType: 'multipleColumns',
-  // groupDisplayType: 'groupRows',
-  // groupDisplayType: 'custom',
-  columnDefs: columnDefs,
-  defaultColDef: defaultColDef,
-  animateRows: true,
-  // groupHideOpenParents: true,
-  // showOpenedGroup: true,
-  // groupRowRenderer: 'agGroupCellRenderer',
-  // groupRowRendererParams: {
-  //     suppressCount: true,
-  //     innerRenderer: p => '<b>'
-  //                     + p.value
-  //                     + '</b>'
-  //                     + ' --- Bob, if your reading this, I slept '
-  //                     + ' with your wife at the Christmas Party '
-  // },
-  autoGroupColumnDef: {
-    // cellRendererParams: 'agGroupCellRenderer',
-    cellRendererParams: {
-      // suppressCount: true,
-      // checkbox: true,
-      // innerRenderer: p => '<b>' + p.value + '</b>'
-    },
-  },
-};
+// console.log(JSON.stringify(House));
 
-const eGridDiv = document.getElementById("myGrid");
-new agGrid.Grid(eGridDiv, gridOptions);
-
-// fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     gridOptions.api.setRowData(data);
+// const getTableData = (data) => {
+//   //console.log(fields);
+//   const table = document.querySelector(".table");
+//   const tbody = document.createElement("tbody");
+//   tbody.id = "tableTbody";
+//   data.forEach((x) => {
+//     const tr = document.createElement("tr");
+//     const fragment = document.createDocumentFragment();
+//     const keys = Object.keys(data[0]);
+//     keys.forEach((y) => {
+//       let td = undefined;
+//       if (y === "ticker") {
+//         td = document.createElement("th");
+//         td.scope = "row";
+//       } else {
+//         td = document.createElement("td");
+//       }
+//       td.innerText = x[y];
+//       fragment.appendChild(td);
+//     });
+//     tr.appendChild(fragment);
+//     tbody.appendChild(tr);
+//     table.appendChild(tbody);
 //   });
+// };
 
-function flattenArray(data) {
-  // our initial value this time is a blank array
-  const initialValue = [];
-  // call reduce on our data
-  return data.reduce((total, value) => {
-    // if the value is an array then recursively call reduce
-    // if the value is not an array then just concat our value
-    return total.concat(Array.isArray(value) ? flattenArray(value) : value);
-  }, initialValue);
+// let result = "[";
+// function func(obj) {
+//   for (let key in obj) {
+//     if (typeof obj[key] === "object") {
+//       func(obj[key]);
+//     } else {
+//       // console.log(obj[key]);
+//       result = result + JSON.stringify(obj[key]) + ",";
+//     }
+//   }
+// }
+
+let result = "[";
+function func(obj) {
+  for (let key in obj) {
+    if (obj[key] instanceof House) {
+      result += "{";
+      func(obj[key]);
+      result += "},";
+    } else if (obj[key] instanceof Object) {
+      // result += "{";
+      func(obj[key]);
+      // result += "}";
+    } else {
+      // console.log(obj[key]);
+      result = result + `${key}:${obj[key]},`;
+    }
+  }
 }
+const getTableData = (data) => {
+  //console.log(fields);
+  const table = document.querySelector(".table");
+  table.innerHTML = "";
+  const tbody = document.createElement("tbody");
+  tbody.id = "tableTbody";
+  let innerText = "";
+  data.forEach((house) => {
+    const tr = document.createElement("tr");
+    const fragment = document.createDocumentFragment();
+    const keys = Object.keys(data[0]);
+    keys.forEach((column) => {
+      let td = undefined;
+      if (column === "ticker") {
+        td = document.createElement("th");
+        td.scope = "row";
+      } else if (Array.isArray(house[column])) {
+        house[column].forEach((column2) => {
+          td = document.createElement("td");
+          innerText = house[column][column2];
+        });
+      } else {
+        td = document.createElement("td");
+        innerText = house[column];
+      }
+      td.innerText = innerText;
+      fragment.appendChild(td);
+    });
+    tr.appendChild(fragment);
+    tbody.appendChild(tr);
+    table.appendChild(tbody);
+  });
 
-let room1 = [
-  new Person("Jula", "Litvinova", 35),
-  new Person("Sergey", "Litvinov", 34),
-];
-let room2 = [new Person("Nansy", "Rttt", 35), new Person("Kit", "Dfhhfhf", 34)];
+  result = "[";
+  func(houses);
+  result += "]";
 
-let appartments = [new Appartment(1, room1), new Appartment(2, room2)];
-
-let house = [
-  new House("Крещатик, Киев", new Appartment(1, room1)),
-  new House("Воскресенская, Днепр", appartments),
-];
-
-gridOptions.api.setRowData(house);
-console.log(JSON.stringify(house));
+  // console.log(houses[0].addres);
+  // console.log(houses[0].appartments[0].fullName);
+  console.log(result);
+};

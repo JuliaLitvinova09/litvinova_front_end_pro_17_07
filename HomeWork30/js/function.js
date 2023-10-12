@@ -1,15 +1,12 @@
-// Користувач заповнює дані для будинку, ввів кількість квартир, нажав “далі”
-// Після цього бачить поля для заповнення по першій квартирі, нажав “далі”
-// Там ввів, що в цій квартирі будуть жити 2 людини, нажав “далі”
-// Заповнюємо дані по 1 людині, “далі”
-// Заповнюємо дані по 2й людині, “далі”
-// заповнюємо дані по 2й квартирі, і так далі далі далі
-let currentTab = 0; // Устанавливаем первую (0) вкладку как текущую
+let currentTab = 0;
 let countApps = 1;
 let countPeoples = 1;
 
 let currentApp = 1;
 let currentPeople = 1;
+let houses = [];
+let appartments = [];
+let appartment = [];
 
 function showTab(n) {
   let x = document.getElementsByClassName("tab");
@@ -45,7 +42,7 @@ function showTab(n) {
 function nextPrev(n) {
   let x = document.getElementsByClassName("tab");
 
-  if (n === 1 && !validateForm()) return false;
+  // if (n === 1 && !validateForm()) return false;
 
   x[currentTab].style.display = "none";
 
@@ -60,8 +57,7 @@ function nextPrev(n) {
   currentTab = currentTab + n;
 
   if (currentTab >= x.length) {
-    document.getElementById("regForm").submit();
-    return false;
+    currentTab = 0;
   }
 
   showTab(currentTab);
@@ -97,11 +93,12 @@ function fixStepIndicator(n) {
 }
 
 function addPeople() {
-  let el = document.getElementById("fullName");
-  el.value = "";
+  let elName = document.getElementById("fullName");
+  let elAge = document.getElementById("age");
 
-  el = document.getElementById("age");
-  el.value = "";
+  appartment.push(new Person(elName.value, elAge.value));
+  elAge.value = "";
+  elName.value = "";
 
   if (countPeoples == currentPeople) {
     currentPeople = 1;
@@ -109,11 +106,22 @@ function addPeople() {
     el = document.getElementById("countPeoples");
     el.value = "";
 
+    appartments.push(appartment);
+    appartment = [];
+
     if (currentApp > countApps) {
-      currentTab = 0;
       currentPeople = 1;
       currentApp = 1;
-      nextPrev(4);
+
+      let elAdr = document.getElementById("adress");
+      let elcountApp = document.getElementById("countApp");
+      houses.push(new House(elAdr.value, appartments));
+      getTableData(houses);
+      elAdr.value = "";
+      elcountApp.value = "";
+
+      appartments = [];
+      nextPrev(1);
     } else {
       nextPrev(-1);
     }
