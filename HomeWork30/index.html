@@ -7,58 +7,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ДЗ 30. Сутності багатоквартирного будинка</title>
   <link href="styles.css" type="text/css" rel="stylesheet" />
-  <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body>
 
 
-<form id="regForm" action="">
+  <form id="regForm" action="">
 
-  <h1>Добавление информации по дому:</h1>
+    <h1>Добавление информации по дому:</h1>
 
-  <!-- Одна "вкладка" для каждого этапа -->
-  <div class="tab">Укажите данные о  доме:
-    <p><input id="adress" type="text"  placeholder="Адрес..." oninput="this.className = ''"></p>
-    <p><input id="countApp" type="number" placeholder="Количество квартир..." oninput="this.className = ''"></p>
-  </div>
-
-  <div class="tab" id="tab-appartment">Количество жильцов в квартире:
-      <p><input id="countPeoples" type="number" placeholder="Количество жильцов..." oninput="this.className = ''"></p>
-  </div>
-
-  <div class="tab" id="tab-people">Данные по жильцам:
-    <p><input id="fullName"  type="text" placeholder="ФИО..." oninput="this.className = ''"></p>
-    <p><input id="age"  type="number" placeholder="Возраст..." oninput="this.className = ''"></p>
-    <button type="button" id="addBtn">Добавить жильца</button>
-  </div>
-
-
-  <div style="overflow:auto;">
-    <div style="float:right;">
-      <button type="button" id="prevBtn" >Назад</button>
-      <button type="button" id="nextBtn" >Дальше</button>
+    <!-- Одна "вкладка" для каждого этапа -->
+    <div class="tab">Укажите данные о доме:
+      <p><input id="adress" type="text" placeholder="Адрес..." oninput="this.className = ''"></p>
+      <p><input id="countApp" type="number" placeholder="Количество квартир..." oninput="this.className = ''"></p>
     </div>
-  </div>
 
-  <!-- Кружки, показывающие этапы формы -->
-  <div style="text-align:center;margin-top:40px;">
-    <span class="step"></span>
-    <span class="step"></span>
-    <span class="step"></span>
-  </div>
+    <div class="tab" id="tab-appartment">Количество жильцов в квартире:
+      <p><input id="countPeoples" type="number" placeholder="Количество жильцов..." oninput="this.className = ''"></p>
+    </div>
 
-</form>
+    <div class="tab" id="tab-people">Данные по жильцам:
+      <p><input id="fullName" type="text" placeholder="ФИО..." oninput="this.className = ''"></p>
+      <p><input id="age" type="number" placeholder="Возраст..." oninput="this.className = ''"></p>
+      <button type="button" id="addBtn">Добавить жильца</button>
+    </div>
 
-  <div id="positionsTable" class="table"></div>
-  <div id="myGrid" class="ag-theme-alpine" style="height: 500px"></div>
 
-   <script src="js/entity/Person.js"></script>
+    <div style="overflow:auto;">
+      <div style="float:right;">
+        <button type="button" id="nextBtn">Дальше</button>
+      </div>
+    </div>
+
+    <!-- Кружки, показывающие этапы формы -->
+    <div style="text-align:center;margin-top:40px;">
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+    </div>
+
+  </form>
+
+  <table class="table">
+
+  </table>
+
+  <script src="js/entity/Person.js"></script>
   <script src="js/entity/Appartment.js"></script>
   <script src="js/entity/House.js"></script>
-  <!-- <script src="js/function.js"></script> -->
-  <script src="js/app.js"></script>
-    <script src="js/function.js"></script>
+
+  <script src="js/table.js"></script>
+  <script src="js/function.js"></script>
 
 </body>
 

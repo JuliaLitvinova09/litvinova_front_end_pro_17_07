@@ -18,11 +18,6 @@ function showTab(n) {
   countPeoples = document.getElementById("countPeoples").value;
   countPeoples = countPeoples === 0 ? 1 : countPeoples;
 
-  if (n == 0) {
-    document.getElementById("prevBtn").style.display = "none";
-  } else if (currentTab !== 2) {
-    document.getElementById("prevBtn").style.display = "inline";
-  }
   if (currentTab === 1) {
     el = document.getElementById("tab-appartment");
     el.childNodes[0].data = `Количество жильцов в квартире: ${currentApp}`;
@@ -42,16 +37,14 @@ function showTab(n) {
 function nextPrev(n) {
   let x = document.getElementsByClassName("tab");
 
-  // if (n === 1 && !validateForm()) return false;
+  if (n === 1 && !validateForm() && currentTab != 2) return false;
 
   x[currentTab].style.display = "none";
 
   if (currentTab + n === 2) {
     document.getElementById("nextBtn").style.display = "none";
-    document.getElementById("prevBtn").style.display = "none";
   } else {
     document.getElementById("nextBtn").style.display = "inline";
-    document.getElementById("prevBtn").style.display = "inline";
   }
 
   currentTab = currentTab + n;
@@ -95,6 +88,9 @@ function fixStepIndicator(n) {
 function addPeople() {
   let elName = document.getElementById("fullName");
   let elAge = document.getElementById("age");
+  if (!validateForm()) {
+    return false;
+  }
 
   appartment.push(new Person(elName.value, elAge.value));
   elAge.value = "";
@@ -116,12 +112,13 @@ function addPeople() {
       let elAdr = document.getElementById("adress");
       let elcountApp = document.getElementById("countApp");
       houses.push(new House(elAdr.value, appartments));
+
       getTableData(houses);
-      elAdr.value = "";
-      elcountApp.value = "";
 
       appartments = [];
       nextPrev(1);
+      elAdr.value = "";
+      elcountApp.value = "";
     } else {
       nextPrev(-1);
     }
@@ -133,10 +130,6 @@ function addPeople() {
 }
 
 showTab(currentTab);
-
-document.getElementById("prevBtn").addEventListener("click", (event) => {
-  nextPrev(-1);
-});
 
 document.getElementById("nextBtn").addEventListener("click", (event) => {
   nextPrev(1);
